@@ -2,15 +2,23 @@ package pl.coderslab.crm.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Data
 @Entity
 public class User {
 
-//    login – pole unikalne w systemie,
-//            imię,
-//            nazwisko,
-//    hasło – ma być hashowane przed zapisem za pomocą dowolnego algorytmu.
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(unique = true)
+    private String login;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String password; //hash before saving (add with spring security when all is working correctly)
 
 }

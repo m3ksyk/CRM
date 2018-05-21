@@ -3,17 +3,31 @@ package pl.coderslab.crm.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.sql.Date;
 
 @Data
 @Entity
 public class Task {
-//
-//    data utworzenia,
-//            temat,
-//    projekt – połączenie z encją projektów,
-//            opis,
-//    status – połączenie z encją statusów,
-//    priorytet – połączenie z encją priorytetów,
-//    aktualnie przydzielonego użytkownika – połączenie z encją użytkowników – wybieramy tylko
-//    użytkowników przydzielonych do projektu, którego dotyczy zadanie.
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    private Date created;
+
+    private String issue;
+
+    private String description;
+
+    private Project project;
+
+    private Priority priority;
+
+    private Status status;
+
+    private User assignedUser;
+
 }
