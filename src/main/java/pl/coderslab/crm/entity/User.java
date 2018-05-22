@@ -1,6 +1,7 @@
 package pl.coderslab.crm.entity;
 
 import lombok.Data;
+import pl.coderslab.crm.BCrypt.BCrypt;
 
 import javax.persistence.*;
 
@@ -19,6 +20,17 @@ public class User {
 
     private String lastName;
 
-    private String password; //hash before saving (add with spring security when all is working correctly)
+    private String password;
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String cryptSalt;
+
+    public void setCryptSalt(String cryptSalt) {
+        this.cryptSalt = BCrypt.gensalt();
+    }
+
+    public void setPassword(String password) {
+        this.password = BCrypt.hashpw(password, cryptSalt);
+    }
 
 }

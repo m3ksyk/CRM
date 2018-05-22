@@ -20,24 +20,12 @@ Recent Activities:
 <!--limit to 25!!-->
 <table>
     <!--ACTIVITY TABLE-->
-    <!--<tr th:each="project, iterStat: ${projects}" >-->
-        <!--<td th:text="${project.name}"></td>-->
-        <!--<td th:text="${project.created}"></td>-->
-        <!--<td th:text="${project.identificator}"></td>-->
+    <tr th:each="activity, iterStat: ${activities}" >
+        <td th:text="${activity.type}"></td>
+        <td th:text="${activity.description}"></td>
 
-    <!--</tr>-->
+    </tr>
 </table>
-
-
-Strona ta ma wyświetlać listę ostatnich aktywności użytkowników systemu od najnowszej do
-najstarszej.
-Limit listy aktywności na stronie głównej to 25.
-Operacje, które mają się pojawiać na liście aktywności, to:
-utworzenie projektu – informacja kto i kiedy to zrobił,
-dodanie zadania do projektu – informacja kto, kiedy i do jakiego projektu dodał zadanie;
-dodatkowo powinien się pojawić link do szczegółów danego zagadnienia.
-zmiana statusu zadania – informacja kto i kiedy to zrobił oraz z jakiego projektu pochodziło
-zadanie; dodatkowo powinien się pojawić link do szczegółów danego zagadnienia.
 
 </body>
 </html>
