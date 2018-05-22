@@ -36,22 +36,6 @@ public class PriorityController {
         return "redirect:/";
     }
 
-//    @GetMapping("/priority/updateform/{id}")
-//    public String priorityUpdateForm(@PathVariable long id, Model model){
-//        Priority priority = priorityRepository.findById(id);
-//
-//        model.addAttribute("priority", priority);
-//        return "PriorityUpdateForm";
-//    }
-//    @PostMapping("/priority/updateform/{id}")
-//    public String saveUpdateForm(@Valid @ModelAttribute Priority priority, BindingResult result){
-//        if(result.hasErrors()){
-//            return "PriorityForm";
-//        }
-//        priorityRepository.save(priority);
-//      return "redirect:/";
-//    }
-
     @RequestMapping("/priority/all")
     public String readAll(Model model){
         model.addAttribute("prioritys", priorityRepository.findAll());
