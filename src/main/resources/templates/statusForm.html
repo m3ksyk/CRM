@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add new status</title>
 </head>
 <body>
+<form th:action="@{/status/form}" th:object="${status}" method="post">
+
+    <p>name: <input type="text" th:field="*{name}" /></p>
+    <p>active: <input type="checkbox" th:field="*{active}" th:value="${status.setActive()}" /></p>
+
+    <p><input type="submit" value="Submit" /></p>
+</form>
 
 </body>
 </html>

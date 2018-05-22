@@ -18,7 +18,7 @@ public class Task {
 
     private Date created;
 
-    private String issue;
+    private String name;
 
     private String description;
 

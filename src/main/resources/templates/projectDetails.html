@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Project Details</title>
 </head>
 <body>
-Szczegóły projektu
-Ma wyświetlać wszystkie dane projektu:
-data utworzenia,
-nazwa,
-identyfikator,
-opis,
-lista użytkowników.
+Project Details:
+<p th:text="${project.created}" />
+<p th:text="${project.projectName}" />
+<p th:text="${project.description}" />
+<p th:text="${project.identificator}" />
+<p th:text="${project.active}" />
+
+  <p><ul th:each="user, iterStat: ${project.assignedUsers}" >
+        <li th:text="${user.login}"></li>
+    </ul></p>
 </body>
 </html>

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Priority list</title>
 </head>
 <body>
+<table>
+
+    <tr th:each="priority, iterStat: ${priorities}" th:class="${iterStat.even}? 'even'">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${priority.name}"></td>
+        <td th:text="${priority.active}"></td>
+    </tr>
+</table>
 
 </body>
 </html>

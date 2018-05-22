@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Project Tasks</title>
 </head>
 <body>
-Lista zadań projektu
-Ma wyświetlać listę zadań z danymi:
-data utworzenia,
-nazwa,
-aktualnie przydzielony użytkownik,
-link do szczegółów zadania,
-link do edycji zadania.
+
+<table>
+    <tr th:each="task, iterStat: ${tasks}" >
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${task.name}"></td>
+        <td th:text="${task.created}"></td>
+        <td th:text="${task.assignedUser}"></td>
+        <td><a th:href=@{"/task/details/${id}}"> details </a></td>
+        <td><a th:href=@{"/task/edit/${id}}"> edit </a></td>
+
+    </tr>
+</table>
 </body>
 </html>

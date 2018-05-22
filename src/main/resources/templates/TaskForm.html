@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Task</title>
+</head>
+<body>
+<<form th:action="@{/task/form" th:object="${task}" method="post">
+
+    <p>name: <input type="text" th:field="*{name}" /></p>
+    <p>name: <input type="text" th:field="*{description}" /></p>
+    <p>active: <input type="checkbox" th:field="*{active}" th:value="${task.setActive()}" /></p>
+    <p><select th:field="*{assignedUser}" th:remove="all-but-first">
+        <option th:each="user : ${users}"
+                th:value="${user.getId()}" th:text="${user.getLogin()}"> User :</option>
+    </select></p>
+    <p><select th:field="*{priority}" th:remove="all-but-first">
+        <option th:each="priority : ${priorities}"
+                th:value="${priority.getId()}" th:text="${priority.getName()}"> Priority :</option>
+    </select></p>
+    <p><select th:field="*{status}" th:remove="all-but-first">
+        <option th:each="status : ${statuses}"
+                th:value="${status.getId()}" th:text="${status.getName()}"> Status :</option>
+    </select></p>
+
+    <p><input type="submit" value="Submit" /></p>
+
+</form>
+
+
+</body>
+</html>

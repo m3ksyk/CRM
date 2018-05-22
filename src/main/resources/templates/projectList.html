@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Projects list</title>
 </head>
 <body>
-lista projektow
-Ma wyświetlać listę projektów z danymi:
-data utworzenia,
-nazwa,
-identyfikator,
-link do listy zadań danego projektu,
-link do szczegółów projektu,
-link do edycji projektu.
+
+<table>
+
+    <tr th:each="project, iterStat: ${projects}" >
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.created}"></td>
+        <td th:text="${project.identificator}"></td>
+        <td><a th:href=@{"/project/details/${id}}"> details </a></td>
+        <td><a th:href=@{"/project/tasks/${id}}"> tasks </a></td>
+        <td><a th:href=@{"/project/edit/${id}}"> edit </a></td>
+
+    </tr>
+</table>
 </body>
 </html>

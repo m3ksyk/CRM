@@ -2,22 +2,23 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Add new project</title>
+    <title>Edit project</title>
 </head>
 <body>
-<form th:action="@{/project/form}" th:object="${project}" method="post">
+<form th:action="@{/project/edit/${id}" th:object="${project}" method="post">
 
+    <input type="hidden" th:field=*{id}" />
+    <input type="hidden" th:field=*{created}" />
     <p>name: <input type="text" th:field="*{projectName}" /></p>
     <p>name: <input type="text" th:field="*{description}" /></p>
     <p>active: <input type="checkbox" th:field="*{active}" th:value="${project.setActive()}" /></p>
     <p><select th:field="*{user}" th:remove="all-but-first">
-    <option th:each="user : ${users}"
-    th:value="${user.getId()}" th:text="${user.getLogin()}"> User :</option>
+        <option th:each="user : ${users}"
+                th:value="${user.getId()}" th:text="${user.getLogin()}"> User :</option>
     </select></p>
 
     <p><input type="submit" value="Submit" /></p>
 
 </form>
-
 </body>
 </html>

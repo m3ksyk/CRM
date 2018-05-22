@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Task details</title>
 </head>
 <body>
-Szczegóły zadania
-Ma wyświetlać wszystkie dane projektu:
-data utworzenia,
-nazwa,
-opis,
-aktualnie przydzielony użytkownik.
+
+<p th:text="${task.created}" />
+<p th:text="${task.name}" />
+<p th:text="${task.description}" />
+<p th:text="${task.priority}" />
+<p th:text="${task.status}" />
+<p th:text="${task.assignedUser}" />
+
 </body>
 </html>
