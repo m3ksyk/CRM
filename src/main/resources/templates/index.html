@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>index</title>
 </head>
 <body>
-NOT IMPLEMENTED CURRENTLY
+Recent projects:
+<!--limit to 5!!-->
+<table>
+    <tr th:each="project, iterStat: ${projects}" >
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.created}"></td>
+        <td th:text="${project.identificator}"></td>
+
+    </tr>
+</table>
+
+Recent Activities:
+<!--limit to 25!!-->
+<table>
+    <!--ACTIVITY TABLE-->
+    <!--<tr th:each="project, iterStat: ${projects}" >-->
+        <!--<td th:text="${project.name}"></td>-->
+        <!--<td th:text="${project.created}"></td>-->
+        <!--<td th:text="${project.identificator}"></td>-->
+
+    <!--</tr>-->
+</table>
 
 
-Strona ta ma wyświetlać ostatnio utworzone projekty od najnowszego do najstarszego.
-Limit projektów na stronie głównej to 5.
 Strona ta ma wyświetlać listę ostatnich aktywności użytkowników systemu od najnowszej do
 najstarszej.
 Limit listy aktywności na stronie głównej to 25.
