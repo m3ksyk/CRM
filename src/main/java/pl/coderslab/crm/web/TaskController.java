@@ -5,14 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.crm.entity.Activity;
 import pl.coderslab.crm.entity.Project;
 import pl.coderslab.crm.entity.Task;
+import pl.coderslab.crm.repository.ActivityRepository;
 import pl.coderslab.crm.repository.ProjectRepository;
 import pl.coderslab.crm.repository.TaskRepository;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
+@Transactional
 @Controller
 public class TaskController {
 
@@ -21,6 +27,9 @@ public class TaskController {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    ActivityRepository activityRepository;
 
     //change to service after implementing service and serviceIMpl logic
 
@@ -35,7 +44,17 @@ public class TaskController {
         if(result.hasErrors()){
             return "TaskForm";
         }
+        task.setCreated(Date.valueOf(LocalDate.now()));
+        Activity activity = new Activity();
+        activity.setType("new task created");
+        activity.setDescription("name: " + task.getName() + ", created: " + task.getCreated() +
+                ", in project: " + task.getProject().getProjectName() +
+                ", assigned To: " + task.getAssignedUser().getLogin() +
+                "<a th:href=@{'/task/details/"+task.getId()+"}'> details </a>");
+        //change this later, add a field "link" or something
+
         taskRepository.save(task);
+        activityRepository.save(activity);
         return "redirect:/";
     }
 
@@ -51,7 +70,17 @@ public class TaskController {
         if(result.hasErrors()){
             return "TaskEdit";
         }
+        Activity activity = new Activity();
+        activity.setType("task edited");
+        activity.setDescription("name: " + task.getName() + ", edited: " + Date.valueOf(LocalDate.now()) +
+                ", in project: " + task.getProject().getProjectName() +
+                ", assigned To: " + task.getAssignedUser().getLogin() +
+                ",current status: " + task.getStatus().getName() +
+                "<a th:href=@{'/task/details/"+task.getId()+"}'> details </a>");
+        //change this later, add a field "link" or something
+
         taskRepository.save(task);
+        activityRepository.save(activity);
       return "redirect:/";
     }
 

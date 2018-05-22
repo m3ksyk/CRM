@@ -5,17 +5,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.crm.entity.Activity;
 import pl.coderslab.crm.entity.Project;
+import pl.coderslab.crm.repository.ActivityRepository;
 import pl.coderslab.crm.repository.ProjectRepository;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
+@Transactional
 @Controller
 public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    ActivityRepository activityRepository;
 
     //change to service after implementing service and serviceIMpl logic
 
@@ -30,7 +39,14 @@ public class ProjectController {
         if(result.hasErrors()){
             return "ProjectForm";
         }
+        project.setCreated(Date.valueOf(LocalDate.now()));
+        Activity activity = new Activity();
+        activity.setType("new project created");
+        activity.setDescription("name: " + project.getProjectName() + ", created: " + project.getCreated() +
+                ", assigned To: " + project.getAssignedUsers().toString());
+
         projectRepository.save(project);
+        activityRepository.save(activity);
         return "redirect:/";
     }
 

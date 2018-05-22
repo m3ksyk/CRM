@@ -19,7 +19,7 @@ public class Activity {
     private String type;
     //types: project created (description: name, who, and when)
     //       task added (description: who when and to what project, also link to task details)
-    //       task status changed (description: task name, who, when, which projekt, also link to task details)
+    //       task status changed (description: task name, who, when, which project, also link to task details)
     private String description;
 
 }

@@ -24,7 +24,7 @@ public class IndexController {
         return "index";
     }
     //TODO actions for viewing projects and activities in index page
-    //add activity within operations of adding tasks etc.
+    //add activity STUFF within operations of adding tasks etc.
 
 
 }
