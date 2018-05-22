@@ -5,6 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Data
 @Entity
@@ -23,13 +25,14 @@ public class Project {
     private String website; //used to validate
 
     private String identificator;
-//    identyfikator – pole nadawane automatycznie tworzone przez usunięcie wszystkich znaków
-//    diakrytycznych, np. (ółą) z pola nazwa oraz zastąpienie wszystkich białych znaków znakiem
-//            myślnika,
 
     @OneToMany
     private List<User> assignedUsers;
 
-    private boolean active; //inactive projects now viewed in the activity list
+    private boolean active;
 
+    public void setIdentificator(String projectName) {
+        this.identificator = projectName.replaceAll("\\s", "-").
+                replaceAll("[^A-Za-z0-9]", "");
+    }
 }
