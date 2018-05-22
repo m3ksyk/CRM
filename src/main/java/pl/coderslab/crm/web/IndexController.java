@@ -1,9 +1,25 @@
 package pl.coderslab.crm.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.crm.repository.ProjectRepository;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    ProjectRepository projectRepository;
+
+    //activity!!
+
+    @RequestMapping("/")
+    public String showRecentProjectsAndActivities(Model model){
+        model.addAttribute("projects", projectRepository.findAll());
+//activity!!
+        return "index";
+    }
     //TODO actions for viewing projects and activities in index page
     //add new activity entity and repository and service for it. add activity within operations of adding tasks etc.
 
