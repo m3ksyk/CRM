@@ -23,8 +23,10 @@ public class IndexController {
         model.addAttribute("activities", activityRepository.findRecent());
         return "index";
     }
-    //TODO actions for viewing projects and activities in index page
-    //add activity STUFF within operations of adding tasks etc.
 
+    @RequestMapping("/admin")
+    public String adminPage(){
+        return "admin";
+    }
 
 }
