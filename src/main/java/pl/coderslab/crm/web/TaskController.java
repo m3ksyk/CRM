@@ -73,6 +73,9 @@ public class TaskController {
         Optional<Task> task = taskRepository.findById(id);
 
         model.addAttribute("task", task);
+        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("priorities", priorityRepository.findAll());
+        model.addAttribute("statuses", statusRepository.findAll());
         return "taskEdit";
     }
     @PostMapping("/task/edit/{id}")

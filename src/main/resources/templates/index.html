@@ -8,6 +8,12 @@
 Recent projects:
 <!--limit to 5!!-->
 <table>
+
+    <tr>
+        <th> project name</th>
+        <th> creation date</th>
+        <th> identificator</th>
+    </tr>
     <tr th:each="project, iterStat: ${projects}" >
         <td th:text="${project.projectName}"></td>
         <td th:text="${project.created}"></td>
@@ -20,6 +26,11 @@ Recent Activities:
 <!--limit to 25!!-->
 <table>
     <!--ACTIVITY TABLE-->
+    <tr>
+        <th> type</th>
+        <th> description</th>
+    </tr>
+
     <tr th:each="activity, iterStat: ${activities}" >
         <td th:text="${activity.type}"></td>
         <td th:text="${activity.description}"></td>

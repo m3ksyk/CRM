@@ -7,6 +7,13 @@
 <body>
 <table>
 
+    <tr>
+        <th> # </th>
+        <th> login</th>
+        <th> first name</th>
+        <th> last name</th>
+    </tr>
+
     <tr th:each="user, iterStat: ${users}" >
         <td th:text="${iterStat.count}"></td>
         <td th:text="${user.login}"></td>

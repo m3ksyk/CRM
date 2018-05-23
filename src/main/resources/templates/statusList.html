@@ -7,6 +7,13 @@
 <body>
 
 <table>
+
+    <tr>
+        <th> # </th>
+        <th> name</th>
+        <th> active </th>
+    </tr>
+
     <tr th:each="task, iterStat: ${tasks}" >
         <td th:text="${iterStat.count}"></td>
         <td th:text="${status.name}"></td>

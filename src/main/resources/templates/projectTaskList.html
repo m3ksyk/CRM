@@ -7,6 +7,16 @@
 <body>
 
 <table>
+
+    <tr>
+        <th> # </th>
+        <th> name</th>
+        <th> created</th>
+        <th> user </th>
+        <th> details </th>
+        <th> edit </th>
+    </tr>
+
     <tr th:each="task, iterStat: ${tasks}" >
         <td th:text="${iterStat.count}"></td>
         <td th:text="${task.name}"></td>

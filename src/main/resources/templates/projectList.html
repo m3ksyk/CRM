@@ -8,6 +8,16 @@
 
 <table>
 
+    <tr>
+        <th> # </th>
+        <th> name</th>
+        <th> created</th>
+        <th> identificator </th>
+        <th> details </th>
+        <th> tasks </th>
+        <th> edit </th>
+    </tr>
+
     <tr th:each="project, iterStat: ${projects}" >
         <td th:text="${iterStat.count}"></td>
         <td th:text="${project.name}"></td>
