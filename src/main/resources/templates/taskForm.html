@@ -13,6 +13,10 @@
         <option th:each="user : ${users}"
                 th:value="${user.getId()}" th:text="${user.getLogin()}"> User :</option>
     </select></p>
+    <p><select th:field="*{project}" th:remove="all-but-first">
+        <option th:each="project : ${projects}"
+                th:value="${project.getId()}" th:text="${project.getProjectName()}"> User :</option>
+    </select></p>
     <p><select th:field="*{priority}" th:remove="all-but-first">
         <option th:each="priority : ${priorities}"
                 th:value="${priority.getId()}" th:text="${priority.getName()}"> Priority :</option>

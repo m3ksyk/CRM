@@ -5,7 +5,7 @@
     <title>Edit project</title>
 </head>
 <body>
-<form th:action="@{/project/edit/${id}" th:object="${project}" method="post">
+<form th:action="@{/project/edit/{id}(id=${project.id})}" th:object="${project}" method="post">
 
     <input type="hidden" th:field=*{id}" />
     <input type="hidden" th:field=*{created}" />

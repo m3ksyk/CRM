@@ -22,8 +22,8 @@
         <td th:text="${task.name}"></td>
         <td th:text="${task.created}"></td>
         <td th:text="${task.assignedUser}"></td>
-        <td><a th:href=@{"/task/details/${id}}"> details </a></td>
-        <td><a th:href=@{"/task/edit/${id}}"> edit </a></td>
+        <td><a th:href="@{/task/details/{id}(id=${task.id})}"> details </a></td>
+        <td><a th:href="@{/task/edit/{id}(id=${task.id})}"> edit </a></td>
 
     </tr>
 </table>

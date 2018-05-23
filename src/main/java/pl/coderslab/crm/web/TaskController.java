@@ -47,6 +47,7 @@ public class TaskController {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("priorities", priorityRepository.findAll());
         model.addAttribute("statuses", statusRepository.findAll());
+        model.addAttribute("projects", projectRepository.findAll());
         return "taskForm";
     }
     @PostMapping("/task/form")

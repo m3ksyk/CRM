@@ -5,7 +5,7 @@
     <title>Edit Task</title>
 </head>
 <body>
-<form th:action="@{/task/edit/${id}" th:object="${task}" method="post">
+<form th:action="@{/task/edit/{id}(id=${task.id})}" th:object="${task}" method="post">
 
     <input type="hidden" th:field=*{id}" />
     <input type="hidden" th:field=*{created}" />

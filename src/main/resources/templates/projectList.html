@@ -20,12 +20,12 @@
 
     <tr th:each="project, iterStat: ${projects}" >
         <td th:text="${iterStat.count}"></td>
-        <td th:text="${project.name}"></td>
+        <td th:text="${project.projectName}"></td>
         <td th:text="${project.created}"></td>
         <td th:text="${project.identificator}"></td>
-        <td><a th:href=@{"/project/details/${id}}"> details </a></td>
-        <td><a th:href=@{"/project/tasks/${id}}"> tasks </a></td>
-        <td><a th:href=@{"/project/edit/${id}}"> edit </a></td>
+        <td><a th:href="@{/project/details/{id}(id=${project.id})}"> details </a></td>
+        <td><a th:href="@{/project/tasks/{id}(id=${project.id})}"> tasks </a></td>
+        <td><a th:href="@{/project/edit/{id}(id=${project.id})}"> edit </a></td>
 
     </tr>
 </table>
