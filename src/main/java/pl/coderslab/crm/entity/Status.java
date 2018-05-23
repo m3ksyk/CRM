@@ -2,11 +2,9 @@ package pl.coderslab.crm.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,5 +19,8 @@ public class Status {
     private boolean active; //cant assign inactive status to task
 
     private int sortOrder; //used to sort statuses ??
+
+    @OneToMany
+    private List<Task> tasks;
 
 }

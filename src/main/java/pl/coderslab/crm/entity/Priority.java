@@ -3,6 +3,7 @@ package pl.coderslab.crm.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,4 +17,6 @@ public class Priority {
 
     private boolean active; //can't assign inactive priorities to a task
 
+    @OneToMany
+    private List<Task> tasks;
 }

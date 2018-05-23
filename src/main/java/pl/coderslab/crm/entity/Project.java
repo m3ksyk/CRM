@@ -29,6 +29,9 @@ public class Project {
     @OneToMany
     private List<User> assignedUsers;
 
+    @OneToMany
+    private List<Task> projectTasks;
+
     private boolean active;
 
     public void setIdentificator(String projectName) {
