@@ -9,6 +9,7 @@ import pl.coderslab.crm.entity.Activity;
 import pl.coderslab.crm.entity.Project;
 import pl.coderslab.crm.repository.ActivityRepository;
 import pl.coderslab.crm.repository.ProjectRepository;
+import pl.coderslab.crm.repository.UserRepository;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -26,19 +27,23 @@ public class ProjectController {
     @Autowired
     ActivityRepository activityRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     //change to service after implementing service and serviceIMpl logic
 
     @GetMapping("/project/form")
     public String projectForm(Model model){
         Project project = new Project();
         model.addAttribute("project", project);
+        model.addAttribute("users", userRepository.findAll());
         return "projectForm";
     }
     @PostMapping("/project/form")
     public String saveForm(@Valid @ModelAttribute Project project, BindingResult result){
-        if(result.hasErrors()){
-            return "projectForm";
-        }
+//        if(result.hasErrors()){
+//            return "projectForm";
+//        }
         project.setCreated(Date.valueOf(LocalDate.now()));
         Activity activity = new Activity();
         activity.setType("new project created");

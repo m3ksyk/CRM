@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.crm.entity.Activity;
 import pl.coderslab.crm.entity.Project;
 import pl.coderslab.crm.entity.Task;
-import pl.coderslab.crm.repository.ActivityRepository;
-import pl.coderslab.crm.repository.ProjectRepository;
-import pl.coderslab.crm.repository.TaskRepository;
+import pl.coderslab.crm.repository.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -31,19 +29,31 @@ public class TaskController {
     @Autowired
     ActivityRepository activityRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    StatusRepository statusRepository;
+
+    @Autowired
+    PriorityRepository priorityRepository;
+
     //change to service after implementing service and serviceIMpl logic
 
     @GetMapping("/task/form")
     public String taskForm(Model model){
         Task task = new Task();
         model.addAttribute("task", task);
+        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("priorities", priorityRepository.findAll());
+        model.addAttribute("statuses", statusRepository.findAll());
         return "taskForm";
     }
     @PostMapping("/task/form")
     public String saveForm(@Valid @ModelAttribute Task task, BindingResult result){
-        if(result.hasErrors()){
-            return "taskForm";
-        }
+//        if(result.hasErrors()){
+//            return "taskForm";
+//        }
         task.setCreated(Date.valueOf(LocalDate.now()));
         Activity activity = new Activity();
         activity.setType("new task created");
@@ -55,7 +65,7 @@ public class TaskController {
 
         taskRepository.save(task);
         activityRepository.save(activity);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @GetMapping("/task/edit/{id}")

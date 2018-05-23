@@ -30,9 +30,9 @@ public class UserController {
     }
     @PostMapping("/user/form")
     public String saveForm(@Valid @ModelAttribute User user, BindingResult result){
-        if(result.hasErrors()){
-            return "userForm";
-        }
+//        if(result.hasErrors()){
+//            return "userForm";
+//        }
         userRepository.save(user);
         return "redirect:/";
     }

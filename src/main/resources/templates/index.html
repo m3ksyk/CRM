@@ -9,7 +9,7 @@ Recent projects:
 <!--limit to 5!!-->
 <table>
     <tr th:each="project, iterStat: ${projects}" >
-        <td th:text="${project.name}"></td>
+        <td th:text="${project.projectName}"></td>
         <td th:text="${project.created}"></td>
         <td th:text="${project.identificator}"></td>
 
