@@ -32,12 +32,12 @@ public class ProjectController {
     public String projectForm(Model model){
         Project project = new Project();
         model.addAttribute("project", project);
-        return "ProjectForm";
+        return "projectForm";
     }
     @PostMapping("/project/form")
     public String saveForm(@Valid @ModelAttribute Project project, BindingResult result){
         if(result.hasErrors()){
-            return "ProjectForm";
+            return "projectForm";
         }
         project.setCreated(Date.valueOf(LocalDate.now()));
         Activity activity = new Activity();
@@ -55,12 +55,12 @@ public class ProjectController {
         Optional<Project> project = projectRepository.findById(id);
 
         model.addAttribute("project", project);
-        return "ProjectEdit";
+        return "projectEdit";
     }
     @PostMapping("/project/edit/{id}")
     public String saveUpdateForm(@Valid @ModelAttribute Project project, BindingResult result){
         if(result.hasErrors()){
-            return "ProjectEdit";
+            return "projectEdit";
         }
         projectRepository.save(project);
       return "redirect:/";
@@ -77,7 +77,7 @@ public class ProjectController {
     public String readProjectDetails(@PathVariable long id, Model model){
         model.addAttribute("project", projectRepository.findById(id));
 
-        return "ProjectDetails";
+        return "projectDetails";
     }
 
 }

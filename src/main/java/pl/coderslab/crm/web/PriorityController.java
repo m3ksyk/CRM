@@ -25,12 +25,12 @@ public class PriorityController {
     public String priorityForm(Model model){
         Priority priority = new Priority();
         model.addAttribute("priority", priority);
-        return "PriorityForm";
+        return "priorityForm";
     }
     @PostMapping("/priority/form")
     public String saveForm(@Valid @ModelAttribute Priority priority, BindingResult result){
         if(result.hasErrors()){
-            return "PriorityForm";
+            return "priorityForm";
         }
         priorityRepository.save(priority);
         return "redirect:/";
@@ -38,7 +38,7 @@ public class PriorityController {
 
     @RequestMapping("/priority/all")
     public String readAll(Model model){
-        model.addAttribute("prioritys", priorityRepository.findAll());
+        model.addAttribute("priorities", priorityRepository.findAll());
 
         return "priorityList";
     }

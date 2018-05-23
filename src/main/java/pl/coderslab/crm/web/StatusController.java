@@ -24,12 +24,12 @@ public class StatusController {
     public String statusForm(Model model){
         Status status = new Status();
         model.addAttribute("status", status);
-        return "StatusForm";
+        return "statusForm";
     }
     @PostMapping("/status/form")
     public String saveForm(@Valid @ModelAttribute Status status, BindingResult result){
         if(result.hasErrors()){
-            return "StatusForm";
+            return "statusForm";
         }
         statusRepository.save(status);
         return "redirect:/";
@@ -37,7 +37,7 @@ public class StatusController {
 
     @RequestMapping("/status/all")
     public String readAll(Model model){
-        model.addAttribute("statuss", statusRepository.findAll());
+        model.addAttribute("statuses", statusRepository.findAll());
 
         return "statusList";
     }

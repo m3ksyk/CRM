@@ -37,12 +37,12 @@ public class TaskController {
     public String taskForm(Model model){
         Task task = new Task();
         model.addAttribute("task", task);
-        return "TaskForm";
+        return "taskForm";
     }
     @PostMapping("/task/form")
     public String saveForm(@Valid @ModelAttribute Task task, BindingResult result){
         if(result.hasErrors()){
-            return "TaskForm";
+            return "taskForm";
         }
         task.setCreated(Date.valueOf(LocalDate.now()));
         Activity activity = new Activity();
@@ -63,12 +63,12 @@ public class TaskController {
         Optional<Task> task = taskRepository.findById(id);
 
         model.addAttribute("task", task);
-        return "TaskEdit";
+        return "taskEdit";
     }
     @PostMapping("/task/edit/{id}")
     public String saveUpdateForm(@Valid @ModelAttribute Task task, BindingResult result){
         if(result.hasErrors()){
-            return "TaskEdit";
+            return "taskEdit";
         }
         Activity activity = new Activity();
         activity.setType("task edited");
@@ -103,7 +103,7 @@ public class TaskController {
     public String readTaskDetails(@PathVariable long id, Model model){
         model.addAttribute("task", taskRepository.findById(id));
 
-        return "TaskDetails";
+        return "taskDetails";
     }
 
 

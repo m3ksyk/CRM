@@ -26,12 +26,12 @@ public class UserController {
     public String userForm(Model model){
         User user = new User();
         model.addAttribute("user", user);
-        return "UserForm";
+        return "userForm";
     }
     @PostMapping("/user/form")
     public String saveForm(@Valid @ModelAttribute User user, BindingResult result){
         if(result.hasErrors()){
-            return "UserForm";
+            return "userForm";
         }
         userRepository.save(user);
         return "redirect:/";
