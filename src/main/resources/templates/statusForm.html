@@ -8,7 +8,7 @@
 <form th:action="@{/status/form}" th:object="${status}" method="post">
 
     <p>name: <input type="text" th:field="*{name}" /></p>
-    <p>active: <input type="checkbox" th:field="*{active}" th:value="${status.setActive()}" /></p>
+    <p>active: <input type="checkbox" th:field="*{active}" th:value="${status.active}" /></p>
 
     <p><input type="submit" value="Submit" /></p>
 </form>

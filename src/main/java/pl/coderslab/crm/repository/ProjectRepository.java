@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-    @Query(value = "SELECT * FROM Project WHERE active=true ORDER BY created DESC LIMIT 5", nativeQuery = true)
+    @Query(value = "SELECT * FROM project WHERE active=true ORDER BY created DESC LIMIT 5", nativeQuery = true)
     List<Project> findRecentFive();
 }

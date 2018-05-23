@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ActivityRepository extends JpaRepository <Activity, Long> {
-    @Query(value = "SELECT * FROM Activity ORDER BY id DESC LIMIT 25", nativeQuery = true)
+    @Query(value = "SELECT * FROM activity ORDER BY id DESC LIMIT 25", nativeQuery = true)
     List<Activity> findRecent();
 }

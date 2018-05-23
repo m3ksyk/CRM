@@ -9,7 +9,7 @@
 
     <p>name: <input type="text" th:field="*{projectName}" /></p>
     <p>name: <input type="text" th:field="*{description}" /></p>
-    <p>active: <input type="checkbox" th:field="*{active}" th:value="${project.setActive()}" /></p>
+    <p>active: <input type="checkbox" th:field="*{active}" th:value="${project.active}" /></p>
     <p><select th:field="*{user}" th:remove="all-but-first">
     <option th:each="user : ${users}"
     th:value="${user.getId()}" th:text="${user.getLogin()}"> User :</option>
